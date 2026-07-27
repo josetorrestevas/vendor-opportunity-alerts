@@ -198,7 +198,7 @@
 
 <script>
   // Set this to your Railway backend URL after deploying
-  const BACKEND_URL = "YOUR_RAILWAY_BACKEND_URL_HERE";
+  const BACKEND_URL = "https://web-production-8758.up.railway.app";
 
   function openModal(plan) {
     document.getElementById("selectedPlan").value = plan;
@@ -240,7 +240,7 @@
       return;
     }
 
-    if (BACKEND_URL === "YOUR_RAILWAY_BACKEND_URL_HERE") {
+    if (BACKEND_URL === "https://web-production-8758.up.railway.app") {
       statusMsg.className = "status-msg error";
       statusMsg.textContent = "Setup incomplete: backend URL not yet configured.";
       statusMsg.style.display = "block";
