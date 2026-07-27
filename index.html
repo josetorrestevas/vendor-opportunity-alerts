@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vendor Opportunity Alerts | Century 21 Tevas Government Contracting</title>
+<style>
+  :root {
+    --navy: #0F1B2D;
+    --navy-deep: #070D16;
+    --gold: #C8A951;
+    --gold-bright: #E8C97A;
+    --paper: #F6F3EC;
+    --ink: #1A1A1A;
+    --slate: #5B6573;
+    --line: #2A3850;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--navy-deep); color:var(--paper); font-family:'Georgia','Iowan Old Style',serif; line-height:1.5; }
+  .topline { background:var(--gold); color:var(--navy-deep); text-align:center; font-family:'Helvetica Neue',Arial,sans-serif; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; padding:8px 0; font-weight:600; }
+  header { max-width:980px; margin:0 auto; padding:64px 24px 40px; border-bottom:1px solid var(--line); }
+  .eyebrow { font-family:'Helvetica Neue',Arial,sans-serif; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin:0 0 18px; }
+  h1 { font-size:44px; line-height:1.12; margin:0 0 20px; max-width:720px; font-weight:400; }
+  h1 em { font-style:italic; color:var(--gold-bright); }
+  .lede { font-family:'Helvetica Neue',Arial,sans-serif; font-size:17px; color:#C9CFD9; max-width:560px; margin:0; }
+  /* pricing */
+  .pricing-section { max-width:980px; margin:0 auto; padding:64px 24px; }
+  .pricing-section h2 { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin:0 0 36px; }
+  .pricing-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  @media(max-width:680px){ .pricing-grid{ grid-template-columns:1fr; } h1{ font-size:32px; } }
+  .plan-card { background:#0D1929; border:1px solid var(--line); border-radius:6px; padding:32px; position:relative; }
+  .plan-card.featured { border-color:var(--gold); }
+  .featured-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--gold); color:var(--navy-deep); font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:4px 14px; border-radius:20px; white-space:nowrap; }
+  .plan-name { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin:0 0 12px; }
+  .plan-price { font-size:42px; font-weight:400; margin:0 0 4px; color:#fff; }
+  .plan-price span { font-size:16px; color:#8A93A3; }
+  .plan-sub { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:#8A93A3; margin:0 0 24px; }
+  .plan-features { list-style:none; padding:0; margin:0 0 28px; }
+  .plan-features li { font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; color:#C9CFD9; padding:8px 0; border-bottom:1px solid var(--line); display:flex; gap:10px; align-items:flex-start; }
+  .plan-features li:last-child { border-bottom:none; }
+  .check { color:var(--gold); font-size:16px; flex-shrink:0; }
+  .btn-plan { width:100%; padding:14px; border:none; border-radius:4px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; cursor:pointer; transition:opacity 0.15s; }
+  .btn-plan:disabled { opacity:0.6; cursor:not-allowed; }
+  .btn-monthly { background:var(--paper); color:var(--navy-deep); }
+  .btn-annual { background:var(--gold); color:var(--navy-deep); }
+  .btn-plan:hover:not(:disabled) { opacity:0.88; }
+  /* form modal */
+  .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:100; align-items:center; justify-content:center; padding:16px; }
+  .modal-overlay.open { display:flex; }
+  .modal { background:var(--paper); color:var(--ink); border-radius:6px; padding:36px; width:100%; max-width:520px; max-height:90vh; overflow-y:auto; position:relative; font-family:'Helvetica Neue',Arial,sans-serif; }
+  .modal h2 { font-family:'Georgia',serif; font-size:22px; color:var(--navy-deep); margin:0 0 6px; }
+  .modal .sub { font-size:13px; color:var(--slate); margin:0 0 24px; }
+  .modal-close { position:absolute; top:16px; right:20px; background:none; border:none; font-size:22px; cursor:pointer; color:var(--slate); }
+  label { display:block; font-size:12px; letter-spacing:0.04em; text-transform:uppercase; color:var(--slate); margin-bottom:5px; margin-top:16px; font-weight:600; }
+  label:first-of-type { margin-top:0; }
+  input[type=text], input[type=email], input[type=tel], textarea { width:100%; padding:10px 12px; border:1px solid #D8D2C2; background:#fff; border-radius:3px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; color:var(--ink); }
+  input:focus, textarea:focus { outline:2px solid var(--gold); border-color:var(--gold); }
+  textarea { resize:vertical; min-height:64px; }
+  .class-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-top:6px; max-height:200px; overflow-y:auto; border:1px solid #D8D2C2; border-radius:3px; padding:10px; background:#fff; }
+  .class-grid label { display:flex; align-items:flex-start; gap:7px; margin:0; text-transform:none; letter-spacing:normal; font-size:12.5px; font-weight:400; color:var(--ink); cursor:pointer; }
+  .class-grid input[type=checkbox] { width:auto; margin-top:2px; accent-color:var(--gold); }
+  .hint { font-size:11.5px; color:var(--slate); margin-top:5px; }
+  .btn-submit { margin-top:24px; width:100%; padding:13px; background:var(--navy-deep); color:var(--gold-bright); border:none; border-radius:3px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; cursor:pointer; }
+  .btn-submit:disabled { opacity:0.6; cursor:not-allowed; }
+  .status-msg { margin-top:14px; font-size:13px; padding:11px 14px; border-radius:3px; display:none; }
+  .status-msg.error { display:block; background:#FBE9E7; color:#8A2A1F; border:1px solid #E8B3AB; }
+  /* how it works */
+  .hiw { max-width:980px; margin:0 auto; padding:0 24px 80px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; }
+  @media(max-width:680px){ .hiw{ grid-template-columns:1fr; } }
+  .hiw-head { grid-column:1/-1; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin:0 0 8px; }
+  .step-card { border-top:2px solid var(--gold); padding-top:20px; }
+  .step-num { font-size:28px; color:var(--gold-bright); margin:0 0 8px; }
+  .step-title { font-family:'Helvetica Neue',Arial,sans-serif; font-size:15px; font-weight:600; color:#fff; margin:0 0 8px; }
+  .step-body { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13.5px; color:#9AA3B2; margin:0; }
+  footer { border-top:1px solid var(--line); text-align:center; padding:28px 24px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:12px; color:#6E7787; }
+</style>
+</head>
+<body>
+
+<div class="topline">Century 21 Tevas &nbsp;·&nbsp; Service-Disabled Veteran-Owned Small Business &nbsp;·&nbsp; TREC #9012066</div>
+
+<header>
+  <p class="eyebrow">Government Contracting Division</p>
+  <h1>Texas posts thousands of bid opportunities. <em>We'll tell you which ones are yours.</em></h1>
+  <p class="lede">Every weekday morning we scan the Texas Electronic State Business Daily (ESBD) and email you only the newly Posted opportunities that match your specialty. No noise — just your opportunities.</p>
+</header>
+
+<!-- PRICING -->
+<section class="pricing-section">
+  <h2>Choose your plan</h2>
+  <div class="pricing-grid">
+
+    <div class="plan-card">
+      <p class="plan-name">Monthly</p>
+      <p class="plan-price">$25<span>/month</span></p>
+      <p class="plan-sub">7-day free trial — cancel anytime</p>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> Daily matched opportunity alerts (M–F)</li>
+        <li><span class="check">✓</span> NIGP class + keyword matching</li>
+        <li><span class="check">✓</span> Direct links to each solicitation</li>
+        <li><span class="check">✓</span> Proposal help available on request</li>
+        <li><span class="check">✓</span> Cancel anytime — no contract</li>
+      </ul>
+      <button class="btn-plan btn-monthly" onclick="openModal('monthly')">Start Free Trial</button>
+    </div>
+
+    <div class="plan-card featured">
+      <div class="featured-badge">Best Value</div>
+      <p class="plan-name">Annual</p>
+      <p class="plan-price">$20<span>/month</span></p>
+      <p class="plan-sub">Billed $240/year · Save $60 · 7-day free trial</p>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> Everything in Monthly</li>
+        <li><span class="check">✓</span> Save $60 compared to monthly</li>
+        <li><span class="check">✓</span> Priority proposal review</li>
+        <li><span class="check">✓</span> Quarterly opportunity summary report</li>
+        <li><span class="check">✓</span> Direct broker contact line</li>
+      </ul>
+      <button class="btn-plan btn-annual" onclick="openModal('annual')">Start Free Trial</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="hiw">
+  <p class="hiw-head">How it works</p>
+  <div class="step-card">
+    <div class="step-num">01</div>
+    <p class="step-title">Register your specialty</p>
+    <p class="step-body">Pick your NIGP service classes and describe what your business does specifically. Takes two minutes.</p>
+  </div>
+  <div class="step-card">
+    <div class="step-num">02</div>
+    <p class="step-title">We watch the board daily</p>
+    <p class="step-body">Every weekday morning our system scans TX SmartBuy ESBD for newly Posted solicitations across all Texas agencies.</p>
+  </div>
+  <div class="step-card">
+    <div class="step-num">03</div>
+    <p class="step-title">You get matched alerts</p>
+    <p class="step-body">Only opportunities matching your specialty land in your inbox — same morning they're posted. No scrolling through hundreds of irrelevant listings.</p>
+  </div>
+</section>
+
+<!-- SIGNUP MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <h2 id="modalTitle">Start your free trial</h2>
+    <p class="sub" id="modalSub">7 days free — no charge until your trial ends.</p>
+    <input type="hidden" id="selectedPlan" value="monthly">
+
+    <label for="companyName">Company name *</label>
+    <input type="text" id="companyName">
+
+    <label for="contactName">Your name *</label>
+    <input type="text" id="contactName">
+
+    <label for="email">Email *</label>
+    <input type="email" id="email">
+
+    <label for="phone">Phone (optional)</label>
+    <input type="tel" id="phone">
+
+    <label>NIGP service classes (select all that apply)</label>
+    <div class="class-grid">
+      <label><input type="checkbox" value="912 - Architectural Services"> 912 – Architectural</label>
+      <label><input type="checkbox" value="913 - Engineering Services"> 913 – Engineering</label>
+      <label><input type="checkbox" value="918 - Consulting Services"> 918 – Consulting</label>
+      <label><input type="checkbox" value="920 - Custodial Services"> 920 – Custodial</label>
+      <label><input type="checkbox" value="924 - Security Services"> 924 – Security</label>
+      <label><input type="checkbox" value="925 - Construction Services"> 925 – Construction</label>
+      <label><input type="checkbox" value="930 - Lease/Rental of Property"> 930 – Lease/Rental</label>
+      <label><input type="checkbox" value="946 - Printing Services"> 946 – Printing</label>
+      <label><input type="checkbox" value="948 - Real Estate Services"> 948 – Real Estate</label>
+      <label><input type="checkbox" value="958 - Surveying Services"> 958 – Surveying</label>
+      <label><input type="checkbox" value="961 - Real Estate Appraisal"> 961 – Appraisal</label>
+      <label><input type="checkbox" value="965 - Information Technology"> 965 – IT</label>
+      <label><input type="checkbox" value="966 - Telecommunications"> 966 – Telecom</label>
+      <label><input type="checkbox" value="968 - Title/Land Services"> 968 – Title/Land</label>
+      <label><input type="checkbox" value="975 - Training Services"> 975 – Training</label>
+      <label><input type="checkbox" value="998 - Maintenance/Repair"> 998 – Maintenance</label>
+    </div>
+    <p class="hint">Don't see your category? Describe it below.</p>
+
+    <label for="notes">What specifically do you do?</label>
+    <textarea id="notes" placeholder="e.g. Commercial HVAC, interior renovation, title services for land acquisition..."></textarea>
+
+    <button class="btn-submit" id="submitBtn" onclick="handleSubmit()">Continue to Payment →</button>
+    <div class="status-msg" id="statusMsg"></div>
+  </div>
+</div>
+
+<footer>
+  Century 21 Tevas &nbsp;·&nbsp; Pearland, Texas &nbsp;·&nbsp; Greater Houston &amp; Brazoria County Corridor<br>
+  Opportunity data sourced from the Texas Electronic State Business Daily (ESBD), Texas Comptroller of Public Accounts.
+</footer>
+
+<script>
+  // Set this to your Railway backend URL after deploying
+  const BACKEND_URL = "YOUR_RAILWAY_BACKEND_URL_HERE";
+
+  function openModal(plan) {
+    document.getElementById("selectedPlan").value = plan;
+    document.getElementById("modalTitle").textContent = plan === "annual"
+      ? "Start your free trial — Annual Plan"
+      : "Start your free trial — Monthly Plan";
+    document.getElementById("modalSub").textContent = plan === "annual"
+      ? "7 days free, then $240/year (= $20/month). Cancel anytime."
+      : "7 days free, then $25/month. Cancel anytime.";
+    document.getElementById("modalOverlay").classList.add("open");
+  }
+
+  function closeModal() {
+    document.getElementById("modalOverlay").classList.remove("open");
+  }
+
+  document.getElementById("modalOverlay").addEventListener("click", function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  async function handleSubmit() {
+    const company  = document.getElementById("companyName").value.trim();
+    const contact  = document.getElementById("contactName").value.trim();
+    const email    = document.getElementById("email").value.trim();
+    const phone    = document.getElementById("phone").value.trim();
+    const plan     = document.getElementById("selectedPlan").value;
+    const notes    = document.getElementById("notes").value.trim();
+    const checked  = Array.from(document.querySelectorAll(".class-grid input:checked")).map(cb => cb.value);
+    const statusMsg = document.getElementById("statusMsg");
+    const submitBtn = document.getElementById("submitBtn");
+
+    statusMsg.className = "status-msg";
+    statusMsg.style.display = "none";
+
+    if (!company || !email) {
+      statusMsg.className = "status-msg error";
+      statusMsg.textContent = "Please fill in company name and email.";
+      statusMsg.style.display = "block";
+      return;
+    }
+
+    if (BACKEND_URL === "YOUR_RAILWAY_BACKEND_URL_HERE") {
+      statusMsg.className = "status-msg error";
+      statusMsg.textContent = "Setup incomplete: backend URL not yet configured.";
+      statusMsg.style.display = "block";
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Redirecting to payment...";
+
+    try {
+      const res = await fetch(BACKEND_URL + "/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companyName:  company,
+          contactName:  contact,
+          email:        email,
+          phone:        phone,
+          nigpClasses:  checked.join("; "),
+          notes:        notes,
+          plan:         plan,
+        }),
+      });
+
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || "Unexpected response");
+      }
+    } catch (err) {
+      statusMsg.className = "status-msg error";
+      statusMsg.textContent = "Something went wrong. Please try again or email jose@josetorres.realtor.";
+      statusMsg.style.display = "block";
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Continue to Payment →";
+    }
+  }
+</script>
+</body>
+</html>
