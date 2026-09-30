@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>You're on the list | Century 21 Tevas</title>
+<title>You're on the list | TX Smart Alerts</title>
 <style>
   body { margin:0; background:#070D16; color:#F6F3EC; font-family:'Georgia',serif; display:flex; align-items:center; justify-content:center; min-height:100vh; padding:24px; }
   .card { background:#0D1929; border:1px solid #2A3850; border-radius:8px; padding:48px 40px; max-width:480px; text-align:center; }
@@ -13,6 +13,33 @@
   .sub { font-size:13px; color:#6E7787; }
   a { color:#C8A951; }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1419643606931194');
+fbq('track', 'PageView');
+fbq('track', 'StartTrial', { currency: 'USD', value: 0 });
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1419643606931194&ev=StartTrial&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J0ZKQJ48JX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-J0ZKQJ48JX');
+  gtag('event', 'sign_up', { method: 'stripe_trial' });
+</script>
 </head>
 <body>
   <div class="card">

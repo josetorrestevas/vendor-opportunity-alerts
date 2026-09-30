@@ -30,13 +30,13 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
   gtag('config', 'G-J0ZKQJ48JX');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta property="og:title" content="Texas Contracting Alerts — Daily Bid Alerts for Texas Vendors">
-<meta property="og:description" content="Never miss a Texas government bid opportunity. Daily ESBD alerts matched to your NIGP specialty. 7-day free trial.">
+<meta property="og:title" content="TX Smart Alerts — Daily Texas Bid Alerts for Contractors">
+<meta property="og:description" content="Never miss a Texas government bid opportunity. Daily TX SmartBuy (ESBD) alerts matched to your trade. 7-day free trial.">
 <meta property="og:image" content="https://www.txsmartalerts.com/preview.png">
 <meta property="og:url" content="https://www.txsmartalerts.com">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<title>Texas Contracting Alerts | Government Bid Opportunity Alerts</title>
+<title>TX Smart Alerts | Texas Government Bid Alerts</title>
 <style>
   :root {
     --navy: #0F1B2D;
@@ -89,9 +89,12 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
   input[type=text], input[type=email], input[type=tel], textarea { width:100%; padding:10px 12px; border:1px solid #D8D2C2; background:#fff; border-radius:3px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; color:var(--ink); }
   input:focus, textarea:focus { outline:2px solid var(--gold); border-color:var(--gold); }
   textarea { resize:vertical; min-height:64px; }
-  .class-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-top:6px; max-height:200px; overflow-y:auto; border:1px solid #D8D2C2; border-radius:3px; padding:10px; background:#fff; }
+  .class-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-top:6px; max-height:260px; overflow-y:auto; border:1px solid #D8D2C2; border-radius:3px; padding:10px; background:#fff; }
   .class-grid label { display:flex; align-items:flex-start; gap:7px; margin:0; text-transform:none; letter-spacing:normal; font-size:12.5px; font-weight:400; color:var(--ink); cursor:pointer; }
   .class-grid input[type=checkbox] { width:auto; margin-top:2px; accent-color:var(--gold); }
+  .class-grid .grp { grid-column:1/-1; margin:8px 0 2px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--slate); }
+  .class-grid .grp:first-child { margin-top:0; }
+  .class-grid small { display:block; font-size:10.5px; color:var(--slate); }
   .hint { font-size:11.5px; color:var(--slate); margin-top:5px; }
   .btn-submit { margin-top:24px; width:100%; padding:13px; background:var(--navy-deep); color:var(--gold-bright); border:none; border-radius:3px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; cursor:pointer; }
   .btn-submit:disabled { opacity:0.6; cursor:not-allowed; }
@@ -110,7 +113,7 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
 </head>
 <body>
 
-<div class="topline">Texas Contracting Alerts &nbsp;·&nbsp; Service-Disabled Veteran-Owned Small Business &nbsp;·&nbsp; txsmartbuyalerts@gmail.com</div>
+<div class="topline">TX Smart Alerts &nbsp;·&nbsp; Service-Disabled Veteran-Owned Small Business &nbsp;·&nbsp; txsmartbuyalerts@gmail.com</div>
 
 <header>
   <p class="eyebrow">Texas Government Bid Alerts</p>
@@ -129,7 +132,7 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
       <p class="plan-sub">7-day free trial — cancel anytime</p>
       <ul class="plan-features">
         <li><span class="check">✓</span> Daily matched opportunity alerts (M–F)</li>
-        <li><span class="check">✓</span> NIGP class + keyword matching</li>
+        <li><span class="check">✓</span> Matched to your trade (NIGP codes handled for you)</li>
         <li><span class="check">✓</span> Direct links to each solicitation</li>
         <li><span class="check">✓</span> Proposal help available on request</li>
         <li><span class="check">✓</span> Cancel anytime — no contract</li>
@@ -161,7 +164,7 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
   <div class="step-card">
     <div class="step-num">01</div>
     <p class="step-title">Register your specialty</p>
-    <p class="step-body">Pick your NIGP service classes and describe what your business does specifically. Takes two minutes.</p>
+    <p class="step-body">Pick the kinds of work you do in plain English — we match them to the state's NIGP codes for you. Takes two minutes.</p>
   </div>
   <div class="step-card">
     <div class="step-num">02</div>
@@ -184,10 +187,10 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
     <input type="hidden" id="selectedPlan" value="monthly">
 
     <label for="companyName">Company name *</label>
-    <input type="text" id="companyName">
+    <input type="text" id="companyName" maxlength="200">
 
     <label for="contactName">Your name *</label>
-    <input type="text" id="contactName">
+    <input type="text" id="contactName" maxlength="200">
 
     <label for="email">Email *</label>
     <input type="email" id="email">
@@ -195,29 +198,48 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
     <label for="phone">Phone (optional)</label>
     <input type="tel" id="phone">
 
-    <label>NIGP service classes (select all that apply)</label>
+    <label>What kind of work do you do? (select all that apply)</label>
     <div class="class-grid">
-      <label><input type="checkbox" value="912 - Architectural Services"> 912 – Architectural</label>
-      <label><input type="checkbox" value="913 - Engineering Services"> 913 – Engineering</label>
-      <label><input type="checkbox" value="918 - Consulting Services"> 918 – Consulting</label>
-      <label><input type="checkbox" value="920 - Custodial Services"> 920 – Custodial</label>
-      <label><input type="checkbox" value="924 - Security Services"> 924 – Security</label>
-      <label><input type="checkbox" value="925 - Construction Services"> 925 – Construction</label>
-      <label><input type="checkbox" value="930 - Lease/Rental of Property"> 930 – Lease/Rental</label>
-      <label><input type="checkbox" value="946 - Printing Services"> 946 – Printing</label>
-      <label><input type="checkbox" value="948 - Real Estate Services"> 948 – Real Estate</label>
-      <label><input type="checkbox" value="958 - Surveying Services"> 958 – Surveying</label>
-      <label><input type="checkbox" value="961 - Real Estate Appraisal"> 961 – Appraisal</label>
-      <label><input type="checkbox" value="965 - Information Technology"> 965 – IT</label>
-      <label><input type="checkbox" value="966 - Telecommunications"> 966 – Telecom</label>
-      <label><input type="checkbox" value="968 - Title/Land Services"> 968 – Title/Land</label>
-      <label><input type="checkbox" value="975 - Training Services"> 975 – Training</label>
-      <label><input type="checkbox" value="998 - Maintenance/Repair"> 998 – Maintenance</label>
+      <p class="grp">Building & site construction</p>
+      <label><input type="checkbox" value="General construction / new buildings [NIGP 909, 912]"> <span>General construction / new buildings <small>NIGP 909, 912</small></span></label>
+      <label><input type="checkbox" value="Heavy / civil (roads, bridges, utilities) [NIGP 913]"> <span>Heavy / civil (roads, bridges, utilities) <small>NIGP 913</small></span></label>
+      <label><input type="checkbox" value="Specialty trade on new construction [NIGP 914]"> <span>Specialty trade on new construction <small>NIGP 914</small></span></label>
+      <label><input type="checkbox" value="Renovation / remodeling [NIGP 910-65]"> <span>Renovation / remodeling <small>NIGP 910-65</small></span></label>
+      <label><input type="checkbox" value="Public works (water, sewer, drainage) [NIGP 968]"> <span>Public works (water, sewer, drainage) <small>NIGP 968</small></span></label>
+      <p class="grp">Building trades & maintenance</p>
+      <label><input type="checkbox" value="HVAC [NIGP 910-36]"> <span>HVAC <small>NIGP 910-36</small></span></label>
+      <label><input type="checkbox" value="Roofing &amp; gutters [NIGP 910-66]"> <span>Roofing &amp; gutters <small>NIGP 910-66</small></span></label>
+      <label><input type="checkbox" value="Electrical [NIGP 910-82]"> <span>Electrical <small>NIGP 910-82</small></span></label>
+      <label><input type="checkbox" value="Plumbing [NIGP 910-60]"> <span>Plumbing <small>NIGP 910-60</small></span></label>
+      <label><input type="checkbox" value="Painting [NIGP 910-54]"> <span>Painting <small>NIGP 910-54</small></span></label>
+      <label><input type="checkbox" value="Flooring &amp; carpet [NIGP 910-25, 910-09]"> <span>Flooring &amp; carpet <small>NIGP 910-25, 910-09</small></span></label>
+      <label><input type="checkbox" value="General building repair [NIGP 910-52]"> <span>General building repair <small>NIGP 910-52</small></span></label>
+      <label><input type="checkbox" value="Janitorial / custodial [NIGP 910-39]"> <span>Janitorial / custodial <small>NIGP 910-39</small></span></label>
+      <label><input type="checkbox" value="Pest control [NIGP 910-59]"> <span>Pest control <small>NIGP 910-59</small></span></label>
+      <label><input type="checkbox" value="Asbestos / lead abatement [NIGP 910-38, 910-47]"> <span>Asbestos / lead abatement <small>NIGP 910-38, 910-47</small></span></label>
+      <p class="grp">Grounds, safety & environmental</p>
+      <label><input type="checkbox" value="Landscaping / mowing / grounds [NIGP 988]"> <span>Landscaping / mowing / grounds <small>NIGP 988</small></span></label>
+      <label><input type="checkbox" value="Security guards [NIGP 990-46]"> <span>Security guards <small>NIGP 990-46</small></span></label>
+      <label><input type="checkbox" value="Fire alarm &amp; safety [NIGP 990-42]"> <span>Fire alarm &amp; safety <small>NIGP 990-42</small></span></label>
+      <label><input type="checkbox" value="Environmental services [NIGP 926]"> <span>Environmental services <small>NIGP 926</small></span></label>
+      <p class="grp">Professional services</p>
+      <label><input type="checkbox" value="Architecture [NIGP 906]"> <span>Architecture <small>NIGP 906</small></span></label>
+      <label><input type="checkbox" value="Engineering [NIGP 925]"> <span>Engineering <small>NIGP 925</small></span></label>
+      <label><input type="checkbox" value="Land surveying [NIGP 925-86]"> <span>Land surveying <small>NIGP 925-86</small></span></label>
+      <label><input type="checkbox" value="Consulting [NIGP 918]"> <span>Consulting <small>NIGP 918</small></span></label>
+      <label><input type="checkbox" value="Management services [NIGP 958]"> <span>Management services <small>NIGP 958</small></span></label>
+      <label><input type="checkbox" value="IT / software / data [NIGP 920]"> <span>IT / software / data <small>NIGP 920</small></span></label>
+      <label><input type="checkbox" value="Training &amp; education [NIGP 924]"> <span>Training &amp; education <small>NIGP 924</small></span></label>
+      <label><input type="checkbox" value="Printing [NIGP 966]"> <span>Printing <small>NIGP 966</small></span></label>
+      <p class="grp">Real estate</p>
+      <label><input type="checkbox" value="Real property lease / rental [NIGP 971]"> <span>Real property lease / rental <small>NIGP 971</small></span></label>
+      <label><input type="checkbox" value="Real estate appraisal [NIGP 946-15]"> <span>Real estate appraisal <small>NIGP 946-15</small></span></label>
+      <label><input type="checkbox" value="Title &amp; escrow [NIGP 946-46]"> <span>Title &amp; escrow <small>NIGP 946-46</small></span></label>
     </div>
-    <p class="hint">Don't see your category? Describe it below.</p>
+    <p class="hint">We attach the matching NIGP code for you. Don't see your trade? Describe it below.</p>
 
     <label for="notes">What specifically do you do?</label>
-    <textarea id="notes" placeholder="e.g. Commercial HVAC, interior renovation, title services for land acquisition..."></textarea>
+    <textarea id="notes" maxlength="450" placeholder="e.g. Commercial HVAC, interior renovation, title services for land acquisition..."></textarea>
 
     <button class="btn-submit" id="submitBtn" onclick="handleSubmit()">Continue to Payment →</button>
     <div class="status-msg" id="statusMsg"></div>
@@ -225,8 +247,8 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
 </div>
 
 <footer>
-  Texas Contracting Alerts &nbsp;·&nbsp; Pearland, Texas &nbsp;·&nbsp; txsmartbuyalerts@gmail.com<br>
-  Opportunity data sourced from the Texas Electronic State Business Daily (ESBD), Texas Comptroller of Public Accounts.
+  TX Smart Alerts &nbsp;·&nbsp; Pearland, Texas &nbsp;·&nbsp; txsmartbuyalerts@gmail.com<br>
+  Opportunity data sourced from the Texas Electronic State Business Daily (ESBD), Texas Comptroller of Public Accounts.<br>TX Smart Alerts is an independent service and is not affiliated with the State of Texas. Always confirm details and deadlines on the official posting.
 </footer>
 
 <script>
@@ -242,7 +264,12 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
       ? "7 days free, then $240/year (= $20/month). Cancel anytime."
       : "7 days free, then $25/month. Cancel anytime.";
     document.getElementById("modalOverlay").classList.add("open");
+    try { if (window.gtag) gtag('event', 'form_start', { plan: plan }); } catch (e) {}
   }
+
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") closeModal();
+  });
 
   function closeModal() {
     document.getElementById("modalOverlay").classList.remove("open");
@@ -266,9 +293,13 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
     statusMsg.className = "status-msg";
     statusMsg.style.display = "none";
 
-    if (!company || !email) {
+    let problem = "";
+    if (!company || !contact || !email) problem = "Please fill in company name, your name, and email.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) problem = "Please enter a valid email address.";
+    else if (!checked.length && !notes) problem = "Please pick at least one type of work, or describe what you do.";
+    if (problem) {
       statusMsg.className = "status-msg error";
-      statusMsg.textContent = "Please fill in company name and email.";
+      statusMsg.textContent = problem;
       statusMsg.style.display = "block";
       return;
     }
@@ -278,6 +309,21 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
       statusMsg.textContent = "Setup incomplete: backend URL not yet configured.";
       statusMsg.style.display = "block";
       return;
+    }
+
+    // Conversion tracking: form submitted (fires before redirect to Stripe)
+    try {
+      const value = plan === "annual" ? 240 : 25;
+      if (window.fbq) fbq('track', 'Lead', { content_name: plan, value: value, currency: 'USD' });
+      if (window.gtag) gtag('event', 'generate_lead', { plan: plan, value: value, currency: 'USD' });
+    } catch (e) {}
+
+    // Stripe metadata values max out at 500 characters. If many trades are
+    // picked, fall back to the NIGP codes only so checkout never fails.
+    let nigpText = checked.join("; ");
+    if (nigpText.length > 490) {
+      nigpText = checked.map(v => (v.match(/\[NIGP ([^\]]+)\]/) || [,v])[1]).join("; ");
+      if (nigpText.length > 490) nigpText = nigpText.slice(0, 490);
     }
 
     submitBtn.disabled = true;
@@ -292,7 +338,7 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
           contactName:  contact,
           email:        email,
           phone:        phone,
-          nigpClasses:  checked.join("; "),
+          nigpClasses:  nigpText,
           notes:        notes,
           plan:         plan,
         }),
