@@ -1,9 +1,10 @@
 """
-Vendor Opportunity Alerts - Standalone Monitor
-Scrapes txsmartbuy.gov and emails matched vendors based on NIGP specialty.
+TX Smart Alerts (TXSmartAlerts.com) - Daily Monitor
+Scrapes txsmartbuy.gov ESBD and emails each active subscriber the new
+postings that match the trades they picked on the sign-up form.
 """
 
-import json, os, smtplib, hashlib, time, csv, io, urllib.request
+import json, os, re, smtplib, hashlib, time, csv, io, urllib.request
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from datetime import datetime
@@ -16,6 +17,74 @@ BASE_URL             = "https://www.txsmartbuy.gov/esbd"
 MAX_PAGES            = 5
 VENDOR_SHEET_CSV_URL = os.environ.get("VENDOR_SHEET_CSV_URL", "")
 ADMIN_EMAIL          = os.environ.get("ADMIN_EMAIL", "")
+BRAND                = "TX Smart Alerts"
+SITE                 = "TXSmartAlerts.com"
+PORTAL_URL           = "https://billing.stripe.com/p/login/00w7sKfEu9n40Zs6z99EI00"
+
+
+# Keywords matched against each posting's title (start-of-word, case-insensitive).
+# Keys are the trade names used on the TXSmartAlerts.com sign-up form.
+TRADE_KEYWORDS = {
+    "general construction / new buildings": ["construction", "new building", "building addition", "facility", "facilities", "improvements", "expansion"],
+    "heavy / civil (roads, bridges, utilities)": ["road", "roadway", "street", "bridge", "paving", "pavement", "highway", "culvert", "crack seal", "overlay", "sidewalk", "intersection", "excavation", "earthwork", "water line", "sewer", "utility", "utilities"],
+    "specialty trade on new construction": ["electrical", "plumbing", "mechanical", "hvac", "concrete", "masonry", "steel", "framing", "drywall", "glazing"],
+    "renovation / remodeling": ["renovation", "renovate", "remodel", "refresh", "alteration", "rehabilitation", "restoration", "build-out", "buildout", "finish-out"],
+    "public works (water, sewer, drainage)": ["water line", "waterline", "wastewater", "sewer", "drainage", "storm sewer", "stormwater", "lift station", "storage tank", "water tank", "water treatment", "water plant", "utility", "utilities"],
+    "hvac": ["hvac", "heating", "air condition", "chiller", "boiler", "ventilation", "cooling tower", "mechanical"],
+    "roofing & gutters": ["roof", "gutter"],
+    "electrical": ["electrical", "electric", "lighting", "generator", "wiring"],
+    "plumbing": ["plumbing", "water heater", "backflow", "fixture"],
+    "painting": ["paint", "coating"],
+    "flooring & carpet": ["floor", "carpet", "tile"],
+    "general building repair": ["building maintenance", "facility maintenance", "facilities maintenance", "building repair", "facility repair", "handyman", "door", "window", "locksmith", "lock"],
+    "janitorial / custodial": ["janitorial", "custodial", "cleaning"],
+    "pest control": ["pest", "termite", "rodent", "extermina"],
+    "asbestos / lead abatement": ["asbestos", "abatement", "lead-based", "lead paint", "mold"],
+    "landscaping / mowing / grounds": ["mowing", "landscap", "grounds", "lawn", "tree", "vegetation", "irrigation", "right of way", "right-of-way", "litter"],
+    "security guards": ["security guard", "security services", "security officer", "armed", "unarmed", "guard"],
+    "fire alarm & safety": ["fire alarm", "fire sprinkler", "sprinkler", "fire suppression", "fire protection", "life safety"],
+    "environmental services": ["environmental", "remediation", "hazardous", "waste", "debris", "disposal", "recycling"],
+    "architecture": ["architect", "a/e ", "design services"],
+    "engineering": ["engineering", "engineer"],
+    "land surveying": ["survey"],
+    "consulting": ["consult", "advisory"],
+    "management services": ["management services", "program management", "project management", "construction management", "property management"],
+    "it / software / data": ["software", "it services", "network", "computer", "data", "technology", "cyber", "phone system", "telecom", "server"],
+    "training & education": ["training", "education", "instructor", "curriculum"],
+    "printing": ["printing", "print"],
+    "real property lease / rental": ["lease", "leasing", "office space", "space rental", "real property", "space for"],
+    "real estate appraisal": ["appraisal"],
+    "title & escrow": ["title", "escrow", "abstract", "closing services"],
+}
+
+# Words from "What specifically do you do?" that are too common to match on.
+STOP_WORDS = {
+    "services", "service", "commercial", "residential", "general", "texas", "state",
+    "contract", "contractor", "contractors", "company", "work", "works", "projects",
+    "project", "other", "also", "with", "that", "from", "this", "have", "your", "into",
+    "government", "public", "small", "business", "local", "annual", "various",
+}
+
+
+def trade_keywords(part):
+    """Turn one sign-up selection into keywords.
+    New form format:  'HVAC [NIGP 910-36]'
+    Old form format:  '912 - Architectural Services'"""
+    part = part.strip()
+    if not part:
+        return []
+    name = re.sub(r"\s*\[NIGP[^\]]*\]\s*$", "", part).strip()
+    if name != part or not re.match(r"^\d{3}\s*-", part):
+        kws = TRADE_KEYWORDS.get(name.lower())
+        if kws:
+            return list(kws)
+        return [w for w in re.findall(r"[a-z][a-z/-]{3,}", name.lower()) if w not in STOP_WORDS]
+    desc = part.split("-", 1)[1].strip().lower()   # old '912 - Architectural Services'
+    return [desc] if desc else []
+
+
+def keyword_hit(kw, text):
+    return re.search(r"(?<![a-z0-9])" + re.escape(kw), text) is not None
 
 
 def get_page(page, page_num):
@@ -69,18 +138,18 @@ def load_vendors():
     for row in reader:
         status = (row.get("Status") or "").strip().lower()
         email  = (row.get("Email") or "").strip()
-        if not email or status == "inactive":
+        # Only Active subscribers (in trial or paying). Pending = never finished checkout.
+        if not email or status != "active":
             continue
         classes_raw = row.get("NIGP Classes") or ""
         notes_raw   = row.get("Specialization Notes") or ""
         keywords = []
         for part in classes_raw.split(";"):
-            desc = part.strip().split("-", 1)[-1].strip().lower()
-            if desc:
-                keywords.append(desc)
-        for word in notes_raw.lower().replace(",", " ").split():
-            if len(word) > 3:
+            keywords.extend(trade_keywords(part))
+        for word in re.findall(r"[a-z][a-z/-]+", notes_raw.lower()):
+            if len(word) > 3 and word not in STOP_WORDS:
                 keywords.append(word)
+        keywords = list(dict.fromkeys(k for k in keywords if k))
         vendors.append({"company": row.get("Company Name", "").strip(), "contact": row.get("Contact Name", "").strip(), "email": email, "keywords": keywords})
     print("  Loaded {} active vendors.".format(len(vendors)))
     return vendors
@@ -89,9 +158,11 @@ def load_vendors():
 def match_opportunities(opps, vendor):
     matched = []
     for opp in opps:
-        haystack = (opp["title"] + " " + " ".join(opp["columns"]) + " " + " ".join(opp["secondary"])).lower()
+        # Match on the posting title only; the other columns are dates/IDs/status
+        # text that every posting shares.
+        haystack = opp["title"].lower()
         for kw in vendor["keywords"]:
-            if kw and kw in haystack:
+            if kw and keyword_hit(kw, haystack):
                 matched.append(opp)
                 break
     return matched
@@ -105,7 +176,7 @@ def build_email(opps, heading, intro):
         sec_text  = " | ".join(opp["secondary"]) if opp["secondary"] else ""
         view_link = "<a href='{}' style='color:#C8A951;font-weight:bold;text-decoration:none;'>View</a>".format(opp["detail_url"]) if opp["detail_url"] else ""
         rows_html += "<tr><td style='padding:14px 16px;border-bottom:1px solid #e8e8e8;vertical-align:top;'><div style='font-weight:bold;color:#1A1A2E;font-size:14px;margin-bottom:4px;'>{}</div><div style='color:#555;font-size:12px;margin-bottom:4px;'>{}</div><div style='color:#777;font-size:11px;margin-bottom:6px;'>{}</div><div style='font-size:11px;color:#999;'>Found: {} | {}</div></td></tr>".format(opp["title"], col_text, sec_text, opp["found_date"], view_link)
-    return ("<!DOCTYPE html><html><head><meta charset='UTF-8'></head><body style='font-family:Arial,sans-serif;background:#f5f5f5;margin:0;padding:0;'><table width='100%' cellpadding='0' cellspacing='0' style='background:#f5f5f5;padding:30px 0;'><tr><td align='center'><table width='660' cellpadding='0' cellspacing='0' style='background:#fff;border-radius:8px;overflow:hidden;'><tr><td style='background:#0F1B2D;padding:24px 30px;'><h1 style='color:#C8A951;margin:0;font-size:20px;'>TX SmartBuy ESBD - {}</h1><p style='color:#aaa;margin:6px 0 0;font-size:13px;'>{} | Century 21 Tevas Government Leasing Division</p></td></tr><tr><td style='padding:20px 30px 10px;'><p style='margin:0;color:#333;font-size:14px;'>{}</p></td></tr><tr><td style='padding:0 30px 20px;'><table width='100%' cellpadding='0' cellspacing='0' style='border-collapse:collapse;border:1px solid #e8e8e8;'>{}</table></td></tr><tr><td style='padding:0 30px 24px;'><a href='https://www.txsmartbuy.gov/esbd?page=1&status=1' style='background:#C8A951;color:#0F1B2D;padding:11px 22px;border-radius:4px;text-decoration:none;font-weight:bold;font-size:13px;display:inline-block;'>View All Opportunities</a></td></tr><tr><td style='background:#f0f0f0;padding:14px 30px;font-size:11px;color:#999;'>Automated alert - Century 21 Tevas - Reply STOP to unsubscribe.</td></tr></table></td></tr></table></body></html>").format(heading, today, intro, rows_html)
+    return ("<!DOCTYPE html><html><head><meta charset='UTF-8'></head><body style='font-family:Arial,sans-serif;background:#f5f5f5;margin:0;padding:0;'><table width='100%' cellpadding='0' cellspacing='0' style='background:#f5f5f5;padding:30px 0;'><tr><td align='center'><table width='660' cellpadding='0' cellspacing='0' style='background:#fff;border-radius:8px;overflow:hidden;'><tr><td style='background:#0F1B2D;padding:24px 30px;'><h1 style='color:#C8A951;margin:0;font-size:20px;'>TXSmartAlerts.com - {}</h1><p style='color:#aaa;margin:6px 0 0;font-size:13px;'>{} | TXSmartAlerts.com</p></td></tr><tr><td style='padding:20px 30px 10px;'><p style='margin:0;color:#333;font-size:14px;'>{}</p></td></tr><tr><td style='padding:0 30px 20px;'><table width='100%' cellpadding='0' cellspacing='0' style='border-collapse:collapse;border:1px solid #e8e8e8;'>{}</table></td></tr><tr><td style='padding:0 30px 24px;'><a href='https://www.txsmartbuy.gov/esbd?page=1&status=1' style='background:#C8A951;color:#0F1B2D;padding:11px 22px;border-radius:4px;text-decoration:none;font-weight:bold;font-size:13px;display:inline-block;'>View All Opportunities</a></td></tr><tr><td style='background:#f0f0f0;padding:14px 30px;font-size:11px;color:#999;'>TXSmartAlerts.com &middot; Pearland, Texas &middot; Service-Disabled Veteran-Owned<br>Manage or cancel your subscription in your <a href='https://billing.stripe.com/p/login/00w7sKfEu9n40Zs6z99EI00' style='color:#C8A951;'>customer portal</a>, or reply STOP to unsubscribe.</td></tr></table></td></tr></table></body></html>").format(heading, today, intro, rows_html)
 
 
 def send_email(to, subject, html):
@@ -113,7 +184,7 @@ def send_email(to, subject, html):
         to = [a.strip() for a in to.split(",") if a.strip()]
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
-    msg["From"]    = SENDER_EMAIL
+    msg["From"]    = "{} <{}>".format(BRAND, SENDER_EMAIL)
     msg["To"]      = ", ".join(to)
     msg.attach(MIMEText(html, "html"))
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
@@ -124,7 +195,7 @@ def send_email(to, subject, html):
 
 def main():
     print("\n" + "="*55)
-    print("  Vendor Opportunity Alerts - {}".format(datetime.now().strftime("%Y-%m-%d %H:%M")))
+    print("  TX Smart Alerts monitor - {}".format(datetime.now().strftime("%Y-%m-%d %H:%M")))
     print("="*55)
     seen = load_seen()
     all_opps = []
@@ -155,7 +226,7 @@ def main():
                 intro = "<strong>{} new opportunit{}</strong> matched your specialty. Need proposal help? Reply to this email.".format(len(matched), "ies" if len(matched) != 1 else "y")
                 html  = build_email(matched, "Matched For You", intro)
                 try:
-                    send_email(vendor["email"], "New Texas Bid Opportunities - {}".format(datetime.now().strftime("%b %d, %Y")), html)
+                    send_email(vendor["email"], "TX Smart Alerts: New Texas Bids for You - {}".format(datetime.now().strftime("%b %d, %Y")), html)
                 except Exception as e:
                     print("  [WARN] Failed to email {}: {}".format(vendor["email"], e))
     else:
@@ -163,7 +234,7 @@ def main():
     if ADMIN_EMAIL and new_opps:
         summary = "<html><body style='font-family:Arial,sans-serif;padding:24px;'><h3>Vendor Alert Run Summary</h3><p>New opps found: {}<br>Vendors emailed: {}</p></body></html>".format(len(new_opps), matched_count)
         try:
-            send_email(ADMIN_EMAIL, "Vendor Alert Summary - {}".format(datetime.now().strftime("%b %d, %Y")), summary)
+            send_email(ADMIN_EMAIL, "TX Smart Alerts Run Summary - {}".format(datetime.now().strftime("%b %d, %Y")), summary)
         except Exception as e:
             print("  [WARN] Admin summary failed: {}".format(e))
     if new_opps:
