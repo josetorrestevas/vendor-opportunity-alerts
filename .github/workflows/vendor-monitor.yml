@@ -2,7 +2,7 @@ name: Vendor Opportunity Alerts Daily Monitor
 
 on:
   schedule:
-    - cron: "30 12 * * 1-5"
+    - cron: "0 10 * * 1-5"
   workflow_dispatch:
 
 env:
