@@ -1,0 +1,51 @@
+name: Vendor Opportunity Alerts Daily Monitor
+
+on:
+  schedule:
+    - cron: "30 12 * * 1-5"
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install playwright
+
+      - name: Install Playwright browser
+        run: playwright install --with-deps chromium
+
+      # Restores the most recent saved "seen" list (each run saves a new copy)
+      - name: Restore seen opportunities cache
+        uses: actions/cache/restore@v4
+        with:
+          path: seen_opportunities.json
+          key: vendor-seen-opps-${{ github.run_id }}
+          restore-keys: vendor-seen-opps-
+
+      - name: Run vendor matching monitor
+        env:
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+          VENDOR_SHEET_CSV_URL: ${{ secrets.VENDOR_SHEET_CSV_URL }}
+          ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
+        run: python scraper.py
+
+      # Saves the updated "seen" list under a new name every run
+      - name: Save seen opportunities cache
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: seen_opportunities.json
+          key: vendor-seen-opps-${{ github.run_id }}
