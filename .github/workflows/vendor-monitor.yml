@@ -1,8 +1,8 @@
 name: Vendor Opportunity Alerts Daily Monitor
 
+# Started at 5:00 AM CT Mon-Fri by cron-job.org (via the GitHub API).
+# Can also be started by hand from the Actions tab ("Run workflow").
 on:
-  schedule:
-    - cron: "0 10 * * 1-5"
   workflow_dispatch:
 
 env:
