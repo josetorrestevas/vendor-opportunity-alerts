@@ -30,175 +30,402 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
   gtag('config', 'G-J0ZKQJ48JX');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta property="og:title" content="TX Smart Alerts — Daily Texas Bid Alerts for Contractors">
-<meta property="og:description" content="Never miss a Texas government bid opportunity. Daily TX SmartBuy (ESBD) alerts matched to your trade. 7-day free trial.">
+<meta name="description" content="New Texas state bids for your trade, emailed every weekday morning. 7 days free, then $25/month.">
+<meta property="og:title" content="TX Smart Alerts: Daily Texas Bid Alerts for Contractors">
+<meta property="og:description" content="Never miss a Texas state bid again. New ESBD bids matched to your trade, in your inbox every weekday morning. 7-day free trial.">
 <meta property="og:image" content="https://www.txsmartalerts.com/preview.png">
 <meta property="og:url" content="https://www.txsmartalerts.com">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<title>TX Smart Alerts | Texas Government Bid Alerts</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#111111">
+<title>TX Smart Alerts | Texas State Bids for Your Trade, Emailed Daily</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0F1B2D;
-    --navy-deep: #070D16;
-    --gold: #C8A951;
-    --gold-bright: #E8C97A;
-    --paper: #F6F3EC;
-    --ink: #1A1A1A;
-    --slate: #5B6573;
-    --line: #2A3850;
+    --black: #111111;
+    --black-2: #0B0B0B;
+    --panel: #191919;
+    --line: #2B2B2B;
+    --gold: #D4AF37;
+    --gold-light: #F2CF5B;
+    --gold-metal: linear-gradient(180deg, #FFE58A 0%, #F2C94C 22%, #D9A92A 55%, #B8860B 100%);
+    --gold-metal-hover: linear-gradient(180deg, #FFEC9E 0%, #F7D35E 22%, #E2B436 55%, #C4931A 100%);
+    --white: #FFFFFF;
+    --text: #E9E9E9;
+    --muted: #A3A3A3;
+    --paper: #FFFFFF;
+    --ink: #161616;
+    --ink-muted: #5E5E5E;
+    --display: 'Archivo', 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+    --body: 'Public Sans', 'Helvetica Neue', Arial, sans-serif;
   }
   * { box-sizing: border-box; }
-  body { margin:0; background:var(--navy-deep); color:var(--paper); font-family:'Georgia','Iowan Old Style',serif; line-height:1.5; }
-  .topline { background:var(--gold); color:var(--navy-deep); text-align:center; font-family:'Helvetica Neue',Arial,sans-serif; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; padding:8px 0; font-weight:600; }
-  header { max-width:980px; margin:0 auto; padding:64px 24px 40px; border-bottom:1px solid var(--line); }
-  .eyebrow { font-family:'Helvetica Neue',Arial,sans-serif; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin:0 0 18px; }
-  h1 { font-size:44px; line-height:1.12; margin:0 0 20px; max-width:720px; font-weight:400; }
-  h1 em { font-style:italic; color:var(--gold-bright); }
-  .lede { font-family:'Helvetica Neue',Arial,sans-serif; font-size:17px; color:#C9CFD9; max-width:560px; margin:0; }
-  /* pricing */
-  .pricing-section { max-width:980px; margin:0 auto; padding:64px 24px; }
-  .pricing-section h2 { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin:0 0 36px; }
-  .pricing-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
-  @media(max-width:680px){ .pricing-grid{ grid-template-columns:1fr; } h1{ font-size:32px; } }
-  .plan-card { background:#0D1929; border:1px solid var(--line); border-radius:6px; padding:32px; position:relative; }
-  .plan-card.featured { border-color:var(--gold); }
-  .featured-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--gold); color:var(--navy-deep); font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:4px 14px; border-radius:20px; white-space:nowrap; }
-  .plan-name { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin:0 0 12px; }
-  .plan-price { font-size:42px; font-weight:400; margin:0 0 4px; color:#fff; }
-  .plan-price span { font-size:16px; color:#8A93A3; }
-  .plan-sub { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:#8A93A3; margin:0 0 24px; }
-  .plan-features { list-style:none; padding:0; margin:0 0 28px; }
-  .plan-features li { font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; color:#C9CFD9; padding:8px 0; border-bottom:1px solid var(--line); display:flex; gap:10px; align-items:flex-start; }
-  .plan-features li:last-child { border-bottom:none; }
-  .check { color:var(--gold); font-size:16px; flex-shrink:0; }
-  .btn-plan { width:100%; padding:14px; border:none; border-radius:4px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; cursor:pointer; transition:opacity 0.15s; }
-  .btn-plan:disabled { opacity:0.6; cursor:not-allowed; }
-  .btn-monthly { background:var(--paper); color:var(--navy-deep); }
-  .btn-annual { background:var(--gold); color:var(--navy-deep); }
-  .btn-plan:hover:not(:disabled) { opacity:0.88; }
-  /* form modal */
-  .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:100; align-items:center; justify-content:center; padding:16px; }
-  .modal-overlay.open { display:flex; }
-  .modal { background:var(--paper); color:var(--ink); border-radius:6px; padding:36px; width:100%; max-width:520px; max-height:90vh; overflow-y:auto; position:relative; font-family:'Helvetica Neue',Arial,sans-serif; }
-  .modal h2 { font-family:'Georgia',serif; font-size:22px; color:var(--navy-deep); margin:0 0 6px; }
-  .modal .sub { font-size:13px; color:var(--slate); margin:0 0 24px; }
-  .modal-close { position:absolute; top:16px; right:20px; background:none; border:none; font-size:22px; cursor:pointer; color:var(--slate); }
-  label { display:block; font-size:12px; letter-spacing:0.04em; text-transform:uppercase; color:var(--slate); margin-bottom:5px; margin-top:16px; font-weight:600; }
-  label:first-of-type { margin-top:0; }
-  input[type=text], input[type=email], input[type=tel], textarea { width:100%; padding:10px 12px; border:1px solid #D8D2C2; background:#fff; border-radius:3px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; color:var(--ink); }
-  input:focus, textarea:focus { outline:2px solid var(--gold); border-color:var(--gold); }
-  textarea { resize:vertical; min-height:64px; }
-  .class-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-top:6px; max-height:260px; overflow-y:auto; border:1px solid #D8D2C2; border-radius:3px; padding:10px; background:#fff; }
-  .class-grid label { display:flex; align-items:flex-start; gap:7px; margin:0; text-transform:none; letter-spacing:normal; font-size:12.5px; font-weight:400; color:var(--ink); cursor:pointer; }
-  .class-grid input[type=checkbox] { width:auto; margin-top:2px; accent-color:var(--gold); }
-  .class-grid .grp { grid-column:1/-1; margin:8px 0 2px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--slate); }
-  .class-grid .grp:first-child { margin-top:0; }
-  .class-grid small { display:block; font-size:10.5px; color:var(--slate); }
-  .hint { font-size:11.5px; color:var(--slate); margin-top:5px; }
-  .btn-submit { margin-top:24px; width:100%; padding:13px; background:var(--navy-deep); color:var(--gold-bright); border:none; border-radius:3px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:14px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; cursor:pointer; }
-  .btn-submit:disabled { opacity:0.6; cursor:not-allowed; }
-  .status-msg { margin-top:14px; font-size:13px; padding:11px 14px; border-radius:3px; display:none; }
-  .status-msg.error { display:block; background:#FBE9E7; color:#8A2A1F; border:1px solid #E8B3AB; }
-  /* how it works */
-  .hiw { max-width:980px; margin:0 auto; padding:0 24px 80px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; }
-  @media(max-width:680px){ .hiw{ grid-template-columns:1fr; } }
-  .hiw-head { grid-column:1/-1; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin:0 0 8px; }
-  .step-card { border-top:2px solid var(--gold); padding-top:20px; }
-  .step-num { font-size:28px; color:var(--gold-bright); margin:0 0 8px; }
-  .step-title { font-family:'Helvetica Neue',Arial,sans-serif; font-size:15px; font-weight:600; color:#fff; margin:0 0 8px; }
-  .step-body { font-family:'Helvetica Neue',Arial,sans-serif; font-size:13.5px; color:#9AA3B2; margin:0; }
-  footer { border-top:1px solid var(--line); text-align:center; padding:28px 24px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:12px; color:#6E7787; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+  body { margin: 0; background: var(--black); color: var(--text); font-family: var(--body); font-size: 17px; line-height: 1.55; }
+  img { max-width: 100%; display: block; }
+  a { color: var(--gold-light); }
+  :focus-visible { outline: 3px solid var(--gold-light); outline-offset: 3px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--display); font-weight: 800; font-size: 17px; letter-spacing: 0.01em; border: none; border-radius: 999px; padding: 16px 30px; cursor: pointer; text-decoration: none; transition: background-color .15s, transform .15s; }
+  .btn-gold { background: var(--gold-metal); color: #241800; box-shadow: inset 0 1px 0 rgba(255,250,220,.75), inset 0 -2px 0 rgba(120,80,0,.35), 0 8px 22px -8px rgba(230,175,40,.6); text-shadow: 0 1px 0 rgba(255,240,180,.4); }
+  .btn-gold:hover { background: var(--gold-metal-hover); }
+  .btn-gold:active { transform: translateY(1px); }
+  .btn-ghost { background: transparent; color: var(--white); border: 2px solid var(--line); }
+  .btn-ghost:hover { border-color: var(--gold); }
+  .btn-sm { font-size: 15px; padding: 11px 20px; }
+
+  /* Header */
+  .site-header { border-bottom: 1px solid var(--line); }
+  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .site-header img { height: 52px; width: auto; }
+  @media (max-width: 520px) { .site-header img { height: 36px; } .site-header .btn-sm { padding: 9px 14px; font-size: 14px; } }
+
+  /* Hero */
+  .hero { padding: 64px 0 72px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+  @media (max-width: 900px) { .hero { padding: 40px 0 56px; } .hero .wrap { grid-template-columns: 1fr; gap: 40px; } }
+  .hero h1 { font-family: var(--display); font-weight: 900; font-size: clamp(40px, 6vw, 68px); line-height: 0.98; letter-spacing: -0.02em; color: var(--white); margin: 0; }
+  .rule { width: 120px; height: 4px; background: var(--gold); margin: 26px 0 24px; border: 0; }
+  .hero .lede { font-size: 19px; color: var(--text); max-width: 33em; margin: 0 0 30px; }
+  .hero .lede strong { color: var(--white); font-weight: 600; }
+  .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+  .cta-note { font-size: 14.5px; color: var(--muted); margin: 14px 0 0; }
+  .sdv { display: flex; align-items: center; gap: 10px; margin-top: 30px; font-size: 14px; color: var(--muted); }
+  .sdv svg { flex-shrink: 0; }
+
+  /* Sample email (the signature element) */
+  .inbox { background: var(--paper); color: var(--ink); border-radius: 14px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.7), 0 0 0 1px rgba(201,166,70,.35); overflow: hidden; transform: rotate(1.2deg); }
+  @media (max-width: 900px) { .inbox { transform: none; } }
+  .inbox-bar { display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-bottom: 1px solid #ECECEC; }
+  .inbox-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--black); flex-shrink: 0; overflow: hidden; }
+  .inbox-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .inbox-from { font-weight: 700; font-size: 15px; line-height: 1.2; }
+  .inbox-from span { display: block; font-weight: 400; font-size: 13px; color: var(--ink-muted); }
+  .inbox-time { margin-left: auto; font-size: 13px; color: var(--ink-muted); white-space: nowrap; }
+  .inbox-subject { font-family: var(--display); font-weight: 800; font-size: 20px; padding: 18px 20px 6px; margin: 0; }
+  .inbox-intro { font-size: 14px; color: var(--ink-muted); padding: 0 20px 10px; margin: 0; }
+  .bid { padding: 14px 20px; border-top: 1px solid #F0F0F0; display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; }
+  .bid-title { font-weight: 700; font-size: 15px; line-height: 1.3; }
+  .bid-meta { font-size: 13px; color: var(--ink-muted); grid-column: 1; }
+  .bid-tag { grid-row: 1 / span 2; grid-column: 2; align-self: center; font-size: 12px; font-weight: 700; color: #6B5413; background: #F6EDD2; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+  .inbox-foot { background: #FAFAFA; border-top: 1px solid #ECECEC; font-size: 12px; color: var(--ink-muted); padding: 10px 20px; }
+
+  /* Sections */
+  section.block { padding: 80px 0; border-top: 1px solid var(--line); }
+  @media (max-width: 700px) { section.block { padding: 56px 0; } }
+  .block h2 { font-family: var(--display); font-weight: 900; font-size: clamp(30px, 4vw, 44px); line-height: 1.05; letter-spacing: -0.015em; color: var(--white); margin: 0 0 14px; max-width: 18em; }
+  .block .sub { color: var(--muted); max-width: 40em; margin: 0 0 36px; }
+
+  /* Awards ledger */
+  .ledger { border-top: 4px solid var(--gold); }
+  .ledger-row { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .ledger-what { font-size: 18px; color: var(--white); font-weight: 600; }
+  .ledger-where { display: block; font-size: 14.5px; color: var(--muted); font-weight: 400; }
+  .ledger-amt { font-family: var(--display); font-weight: 900; font-size: clamp(22px, 3vw, 32px); color: var(--gold-light); font-variant-numeric: tabular-nums; }
+  .ledger-total { display: flex; justify-content: space-between; align-items: baseline; padding: 18px 0 0; color: var(--muted); font-size: 15px; }
+  .ledger-total b { font-family: var(--display); font-weight: 900; color: var(--white); font-size: 22px; }
+  .fineprint { font-size: 13px; color: var(--muted); margin-top: 18px; }
+
+  /* Steps */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; list-style: none; padding: 0; margin: 0; counter-reset: s; }
+  @media (max-width: 800px) { .steps { grid-template-columns: 1fr; gap: 24px; } }
+  .steps li { counter-increment: s; border-top: 2px solid var(--line); padding-top: 20px; }
+  .steps li::before { content: counter(s); font-family: var(--display); font-weight: 900; font-size: 44px; color: var(--gold); line-height: 1; display: block; margin-bottom: 12px; }
+  .steps h3 { font-family: var(--display); font-weight: 800; font-size: 21px; color: var(--white); margin: 0 0 8px; }
+  .steps p { margin: 0; color: var(--muted); font-size: 16px; }
+
+  /* Trade picker on page */
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 28px; }
+  .chip { font-family: var(--body); font-size: 15px; font-weight: 500; color: var(--text); background: var(--panel); border: 1.5px solid var(--line); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: border-color .12s, background-color .12s; }
+  .chip:hover { border-color: #555; }
+  .chip[aria-pressed="true"] { background: var(--gold-metal); border-color: #E2B436; color: var(--black); font-weight: 700; }
+  .chip[aria-pressed="true"]::before { content: "✓ "; }
+  .trade-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+  .trade-count { color: var(--muted); font-size: 15px; }
+
+  /* Pricing */
+  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 880px; }
+  @media (max-width: 760px) { .plans { grid-template-columns: 1fr; } }
+  .plan { background: var(--panel); border: 1.5px solid var(--line); border-radius: 16px; padding: 32px; display: flex; flex-direction: column; }
+  .plan.best { border-color: var(--gold); }
+  .plan-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .plan-name { font-family: var(--display); font-weight: 800; font-size: 20px; color: var(--white); margin: 0; }
+  .plan-badge { font-size: 13px; font-weight: 700; color: var(--black); background: var(--gold-metal); border-radius: 999px; padding: 4px 12px; }
+  .plan-price { font-family: var(--display); font-weight: 900; font-size: 54px; line-height: 1; color: var(--white); margin: 6px 0 6px; }
+  .plan-price small { font-size: 18px; font-weight: 600; color: var(--muted); }
+  .plan-sub { font-size: 14.5px; color: var(--muted); margin: 0 0 22px; }
+  .plan ul { list-style: none; padding: 0; margin: 0 0 28px; flex: 1; }
+  .plan li { padding: 9px 0 9px 28px; position: relative; font-size: 15.5px; border-top: 1px solid var(--line); }
+  .plan li::before { content: ""; position: absolute; left: 2px; top: 15px; width: 12px; height: 7px; border-left: 2.5px solid var(--gold); border-bottom: 2.5px solid var(--gold); transform: rotate(-45deg); }
+  .plan .btn { width: 100%; }
+
+  /* FAQ */
+  .faq { max-width: 780px; }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq summary { list-style: none; cursor: pointer; padding: 20px 40px 20px 0; position: relative; font-weight: 600; font-size: 18px; color: var(--white); }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 4px; top: 14px; font-family: var(--display); font-size: 28px; color: var(--gold); }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details p { margin: 0 0 20px; color: var(--muted); max-width: 40em; }
+
+  /* Closing CTA */
+  .closing { text-align: center; padding: 88px 0; border-top: 1px solid var(--line); background: var(--black); }
+  .closing img { width: 180px; margin: 0 auto 28px; }
+  .closing h2 { font-family: var(--display); font-weight: 900; font-size: clamp(30px, 4.5vw, 48px); line-height: 1.05; color: var(--white); margin: 0 auto 14px; max-width: 16em; }
+  .closing p { color: var(--muted); margin: 0 0 30px; }
+
+  .social { display: flex; flex-wrap: wrap; gap: 12px; }
+  .social a { width: 46px; height: 46px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; border: 1.5px solid var(--line); color: var(--white); background: var(--panel); transition: border-color .12s, color .12s; }
+  .social a:hover { border-color: #E2B436; color: #F2CF5B; }
+  .social a[hidden] { display: none; }
+  .social svg { width: 20px; height: 20px; fill: currentColor; }
+  .closing .social { justify-content: center; margin-top: 36px; }
+  .closing .follow { font-size: 15px; color: var(--muted); margin: 36px 0 0; }
+  .closing .follow + .social { margin-top: 14px; }
+  .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 18px; }
+  footer { border-top: 1px solid var(--line); padding: 36px 0 110px; font-size: 13.5px; color: #8A8A8A; }
+  footer p { margin: 0 0 8px; max-width: 60em; }
+  @media (min-width: 761px) { footer { padding-bottom: 36px; } }
+
+  /* Sticky mobile CTA */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); background: rgba(17,17,17,.96); border-top: 1px solid var(--line); display: none; }
+  .sticky-cta .btn { width: 100%; }
+  @media (max-width: 760px) { .sticky-cta.show { display: block; } }
+
+  /* Signup modal (fields and IDs unchanged) */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.78); z-index: 100; align-items: center; justify-content: center; padding: 16px; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--paper); color: var(--ink); border-radius: 16px; padding: 32px; width: 100%; max-width: 560px; max-height: 92vh; overflow-y: auto; position: relative; font-family: var(--body); }
+  @media (max-width: 520px) { .modal { padding: 24px 20px; border-radius: 12px; } }
+  .modal h2 { font-family: var(--display); font-weight: 900; font-size: 26px; line-height: 1.1; color: var(--ink); margin: 0 0 6px; padding-right: 30px; }
+  .modal .sub { font-size: 14.5px; color: var(--ink-muted); margin: 0 0 20px; }
+  .modal-close { position: absolute; top: 14px; right: 16px; width: 36px; height: 36px; background: none; border: none; font-size: 26px; cursor: pointer; color: var(--ink-muted); border-radius: 50%; }
+  .modal-close:hover { background: #F2F2F2; }
+  .plan-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0 0 20px; }
+  .plan-toggle button { display: flex; flex-direction: column; justify-content: flex-start; font-family: var(--body); text-align: left; background: #fff; border: 1.5px solid #DADADA; border-radius: 10px; padding: 10px 14px; cursor: pointer; color: var(--ink); font-size: 14px; }
+  .plan-toggle button b { display: block; font-size: 15px; }
+  .plan-toggle button[aria-pressed="true"] { border-color: var(--gold); background: #FBF5E3; box-shadow: inset 0 0 0 1px var(--gold); }
+  .modal label { display: block; font-size: 14px; color: var(--ink); margin-bottom: 6px; margin-top: 16px; font-weight: 600; }
+  .modal input[type=text], .modal input[type=email], .modal input[type=tel], .modal textarea { width: 100%; padding: 12px 13px; border: 1.5px solid #D6D6D6; background: #fff; border-radius: 8px; font-family: var(--body); font-size: 16px; color: var(--ink); }
+  .modal input:focus, .modal textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,166,70,.25); }
+  .modal textarea { resize: vertical; min-height: 64px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+  @media (max-width: 520px) { .two-col { grid-template-columns: 1fr; } }
+  .class-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; margin-top: 6px; max-height: 280px; overflow-y: auto; border: 1.5px solid #D6D6D6; border-radius: 8px; padding: 12px; background: #fff; }
+  @media (max-width: 520px) { .class-grid { grid-template-columns: 1fr; } }
+  .class-grid label { display: flex; align-items: flex-start; gap: 8px; margin: 0; font-size: 14px; font-weight: 400; color: var(--ink); cursor: pointer; padding: 3px 0; }
+  .class-grid input[type=checkbox] { width: 17px; height: 17px; margin-top: 2px; accent-color: #A88A2E; flex-shrink: 0; }
+  .class-grid .grp { grid-column: 1/-1; margin: 10px 0 2px; font-size: 13px; font-weight: 700; color: var(--ink-muted); }
+  .class-grid .grp:first-child { margin-top: 0; }
+  .class-grid small { display: block; font-size: 11.5px; color: #8A8A8A; }
+  .hint { font-size: 13px; color: var(--ink-muted); margin-top: 6px; }
+  .btn-submit { margin-top: 22px; width: 100%; padding: 16px; background: var(--black); color: var(--gold-light); border: none; border-radius: 999px; font-family: var(--display); font-size: 17px; font-weight: 800; cursor: pointer; }
+  .btn-submit:hover:not(:disabled) { background: #000; }
+  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .reassure { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: var(--ink-muted); margin: 12px 0 0; }
+  .reassure svg { flex-shrink: 0; margin-top: 2px; }
+  .status-msg { margin-top: 14px; font-size: 14px; padding: 11px 14px; border-radius: 8px; display: none; }
+  .status-msg.error { display: block; background: #FBE9E7; color: #8A2A1F; border: 1px solid #E8B3AB; }
 </style>
 </head>
 <body>
 
-<div class="topline">TX Smart Alerts &nbsp;·&nbsp; Service-Disabled Veteran-Owned Small Business &nbsp;·&nbsp; txsmartbuyalerts@gmail.com</div>
-
-<header>
-  <p class="eyebrow">Texas Government Bid Alerts</p>
-  <h1>Texas posts thousands of bid opportunities. <em>We'll tell you which ones are yours.</em></h1>
-  <p class="lede">Every weekday morning we scan the Texas Electronic State Business Daily (ESBD) and email you only the newly Posted opportunities that match your specialty. No noise — just your opportunities.</p>
+<header class="site-header">
+  <div class="wrap">
+    <a href="/" aria-label="TX Smart Alerts home"><img src="/logo-horizontal.png" alt="TX Smart Alerts" width="640" height="185"></a>
+    <button class="btn btn-gold btn-sm" onclick="openModal('monthly', 'header')">Start free trial</button>
+  </div>
 </header>
 
-<!-- PRICING -->
-<section class="pricing-section">
-  <h2>Choose your plan</h2>
-  <div class="pricing-grid">
-
-    <div class="plan-card">
-      <p class="plan-name">Monthly</p>
-      <p class="plan-price">$25<span>/month</span></p>
-      <p class="plan-sub">7-day free trial — cancel anytime</p>
-      <ul class="plan-features">
-        <li><span class="check">✓</span> Daily matched opportunity alerts (M–F)</li>
-        <li><span class="check">✓</span> Matched to your trade (NIGP codes handled for you)</li>
-        <li><span class="check">✓</span> Direct links to each solicitation</li>
-        <li><span class="check">✓</span> Proposal help available on request</li>
-        <li><span class="check">✓</span> Cancel anytime — no contract</li>
-      </ul>
-      <button class="btn-plan btn-monthly" onclick="openModal('monthly')">Start Free Trial</button>
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Never miss a Texas state bid again.</h1>
+      <hr class="rule">
+      <p class="lede">Every weekday morning we check the Texas state bid board (ESBD) and email you <strong>only the new bids that match the work you do</strong>. No digging through hundreds of listings. No finding out after the deadline.</p>
+      <div class="cta-row">
+        <button class="btn btn-gold" onclick="openModal('monthly', 'hero')">Start my 7-day free trial</button>
+        <a class="btn btn-ghost" href="#trades" onclick="track('cta_click',{location:'hero_trades'})">Is my trade covered?</a>
+      </div>
+      <p class="cta-note">7 days free, then $25/month. Cancel anytime.</p>
+      <div class="sdv">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 16.9 5.9 20.4l1.5-6.8L2.2 9l6.9-.7z" fill="#C9A646"/></svg>
+        Service-Disabled Veteran-Owned Small Business, based in Pearland, Texas
+      </div>
     </div>
 
-    <div class="plan-card featured">
-      <div class="featured-badge">Best Value</div>
-      <p class="plan-name">Annual</p>
-      <p class="plan-price">$20<span>/month</span></p>
-      <p class="plan-sub">Billed $240/year · Save $60 · 7-day free trial</p>
-      <ul class="plan-features">
-        <li><span class="check">✓</span> Everything in Monthly</li>
-        <li><span class="check">✓</span> Save $60 compared to monthly</li>
-        <li><span class="check">✓</span> Priority proposal review</li>
-        <li><span class="check">✓</span> Quarterly opportunity summary report</li>
-        <li><span class="check">✓</span> Direct broker contact line</li>
-      </ul>
-      <button class="btn-plan btn-annual" onclick="openModal('annual')">Start Free Trial</button>
-    </div>
-
+    <figure class="inbox" style="margin:0" aria-label="Sample TX Smart Alerts email">
+      <div class="inbox-bar">
+        <div class="inbox-avatar"><img src="/favicon.png" alt=""></div>
+        <div class="inbox-from">TX Smart Alerts<span>to you</span></div>
+        <div class="inbox-time">5:02 AM</div>
+      </div>
+      <p class="inbox-subject">3 new Texas bids for your trades</p>
+      <p class="inbox-intro">Posted on the ESBD since yesterday morning:</p>
+      <div class="bid"><div class="bid-title">HVAC preventive maintenance, state office complex</div><div class="bid-meta">Houston area. Due in 21 days.</div><span class="bid-tag">HVAC</span></div>
+      <div class="bid"><div class="bid-title">Roof replacement, maintenance facility</div><div class="bid-meta">Central Texas. Due in 28 days.</div><span class="bid-tag">Roofing</span></div>
+      <div class="bid"><div class="bid-title">Custodial services, regional field office</div><div class="bid-meta">Corpus Christi. Due in 18 days.</div><span class="bid-tag">Janitorial</span></div>
+      <figcaption class="inbox-foot">Sample email. Each bid links to the official state posting.</figcaption>
+    </figure>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="hiw">
-  <p class="hiw-head">How it works</p>
-  <div class="step-card">
-    <div class="step-num">01</div>
-    <p class="step-title">Register your specialty</p>
-    <p class="step-body">Pick the kinds of work you do in plain English — we match them to the state's NIGP codes for you. Takes two minutes.</p>
-  </div>
-  <div class="step-card">
-    <div class="step-num">02</div>
-    <p class="step-title">We watch the board daily</p>
-    <p class="step-body">Every weekday morning our system scans TX SmartBuy ESBD for newly Posted solicitations across all Texas agencies.</p>
-  </div>
-  <div class="step-card">
-    <div class="step-num">03</div>
-    <p class="step-title">You get matched alerts</p>
-    <p class="step-body">Only opportunities matching your specialty land in your inbox — same morning they're posted. No scrolling through hundreds of irrelevant listings.</p>
+<section class="block" id="awards">
+  <div class="wrap">
+    <h2>Texas awarded these jobs in one week.</h2>
+    <p class="sub">Every one was posted publicly on the state bid board first. The companies that won were watching. Awards from Sept 24–30, 2026, shown by location only.</p>
+    <div class="ledger">
+      <div class="ledger-row"><div class="ledger-what">HVAC equipment replacement<span class="ledger-where">Ellington Field, Houston</span></div><div class="ledger-amt">$1,405,882</div></div>
+      <div class="ledger-row"><div class="ledger-what">Barracks foundation repair<span class="ledger-where">Camp Swift, Bastrop</span></div><div class="ledger-amt">$1,317,335</div></div>
+      <div class="ledger-row"><div class="ledger-what">Highway right-of-way mowing<span class="ledger-where">Crosby County, West Texas</span></div><div class="ledger-amt">$689,620</div></div>
+      <div class="ledger-row"><div class="ledger-what">Culvert repair on FM 2169<span class="ledger-where">Kimble County, Hill Country</span></div><div class="ledger-amt">$428,414</div></div>
+      <div class="ledger-row"><div class="ledger-what">Grease trap and sludge service<span class="ledger-where">Corpus Christi area</span></div><div class="ledger-amt">$90,600</div></div>
+      <div class="ledger-total"><span>Total, five contracts</span><b>$3,931,851</b></div>
+    </div>
   </div>
 </section>
+
+<section class="block" id="how">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <p class="sub">Setup takes about two minutes. You never have to look up a state code.</p>
+    <ol class="steps">
+      <li><h3>Pick your trades</h3><p>Choose the work you do in plain English. We match it to the state's NIGP codes for you.</p></li>
+      <li><h3>We check the bid board</h3><p>Every weekday morning we scan the ESBD for newly posted bids from Texas agencies, including TxDOT.</p></li>
+      <li><h3>You get one email</h3><p>Only the bids that fit your trades, in your inbox before 8 AM, with a link to each official posting.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="block" id="trades">
+  <div class="wrap">
+    <h2>Tap the work you do.</h2>
+    <p class="sub">We cover 30 trades and services. Select yours and we'll carry them into your sign-up.</p>
+    <div class="chips" id="chips"></div>
+    <div class="trade-cta">
+      <button class="btn btn-gold" id="tradeCta" onclick="openModal('monthly', 'trades')">Get bids for these trades</button>
+      <span class="trade-count" id="tradeCount">Nothing selected yet.</span>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="pricing">
+  <div class="wrap">
+    <h2>Simple pricing. First 7 days free.</h2>
+    <p class="sub">Your card isn't charged until your trial ends. Cancel before then and you pay nothing.</p>
+    <div class="plans">
+      <div class="plan">
+        <div class="plan-head"><p class="plan-name">Monthly</p></div>
+        <p class="plan-price">$25<small>/month</small></p>
+        <p class="plan-sub">7-day free trial. Cancel anytime.</p>
+        <ul>
+          <li>New bids for your trades, every weekday</li>
+          <li>We handle the NIGP codes</li>
+          <li>Direct links to each solicitation</li>
+          <li>Proposal help available on request</li>
+          <li>No contract</li>
+        </ul>
+        <button class="btn btn-ghost" onclick="openModal('monthly', 'pricing')">Start free trial</button>
+      </div>
+      <div class="plan best">
+        <div class="plan-head"><p class="plan-name">Annual</p><span class="plan-badge">Save $60</span></div>
+        <p class="plan-price">$20<small>/month</small></p>
+        <p class="plan-sub">Billed $240/year after your 7-day free trial.</p>
+        <ul>
+          <li>Everything in Monthly</li>
+          <li>Priority proposal review</li>
+          <li>Quarterly opportunity summary report</li>
+          <li>Direct line to the founder</li>
+        </ul>
+        <button class="btn btn-gold" onclick="openModal('annual', 'pricing')">Start free trial</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="faq">
+  <div class="wrap"><div class="faq">
+    <h2>Questions contractors ask</h2>
+    <details><summary>Will I be charged today?</summary><p>No. You enter a card to start the trial, but nothing is charged for 7 days. Cancel before then and you pay nothing.</p></details>
+    <details><summary>How do I cancel?</summary><p>Use the account link at the bottom of any alert email, or email txsmartbuyalerts@gmail.com. No contract and no cancellation fee.</p></details>
+    <details><summary>Which bids do you send?</summary><p>Newly posted solicitations on the Texas Electronic State Business Daily (ESBD), the board where Texas state agencies, including TxDOT, post their bids. We send only the ones that match the trades you pick.</p></details>
+    <details><summary>I'm already on the CMBL. Why would I need this?</summary><p>The CMBL sends notices from some agencies, but not every buyer is required to use it. TxDOT, for example, isn't. We check the whole ESBD every weekday and send everything for your trades in one email.</p></details>
+    <details><summary>When does the email arrive?</summary><p>Before 8 AM, Monday through Friday. Add txsmartbuyalerts@gmail.com to your contacts so it lands in your inbox, not spam.</p></details>
+    <details><summary>Can I change my trades later?</summary><p>Yes. Reply to any alert email with what you'd like added or removed.</p></details>
+    <details><summary>Are you the State of Texas?</summary><p>No. TX Smart Alerts is an independent service. We link you to the official state postings, so always confirm details and deadlines there.</p></details>
+  </div></div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <img src="/favicon.png" alt="" width="64" height="64" style="width:80px">
+    <h2>The next bid for your trade posts tomorrow morning.</h2>
+    <p>See it the day it goes up. 7 days free, then $25/month.</p>
+    <button class="btn btn-gold" onclick="openModal('monthly', 'closing')">Start my 7-day free trial</button>
+    <p class="follow">Follow along for new Texas awards every week</p>
+    <div class="social">
+      <a data-social="facebook" href="#" target="_blank" rel="noopener" aria-label="TX Smart Alerts on Facebook" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22z"/></svg></a>
+      <a data-social="instagram" href="#" target="_blank" rel="noopener" aria-label="TX Smart Alerts on Instagram" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 4.7a5.1 5.1 0 1 0 0 10.2 5.1 5.1 0 0 0 0-10.2zm0 8.4a3.3 3.3 0 1 1 0-6.6 3.3 3.3 0 0 1 0 6.6zm5.3-9.8a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg></a>
+      <a data-social="linkedin" href="#" target="_blank" rel="noopener" aria-label="TX Smart Alerts on LinkedIn" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zm6.5 0h3.8v1.6h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg></a>
+      <a data-social="tiktok" href="#" target="_blank" rel="noopener" aria-label="TX Smart Alerts on TikTok" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 2h-3.4v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.4 6.4 0 1 0 5.4 6.3V8.6a7.9 7.9 0 0 0 4.6 1.5V6.7A4.6 4.6 0 0 1 16.6 2z"/></svg></a>
+      <a data-social="youtube" href="#" target="_blank" rel="noopener" aria-label="TX Smart Alerts on YouTube" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1z"/></svg></a>
+      <a data-social="x" href="#" target="_blank" rel="noopener" aria-label="TX Smart Alerts on X" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 3h3.1l-6.8 7.8 8 10.2h-6.3l-4.9-6.4L5.3 21H2.2l7.3-8.3L1.8 3h6.4l4.4 5.9zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></svg></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <p style="margin:0">TX Smart Alerts, Pearland, Texas. txsmartbuyalerts@gmail.com</p>
+      <div class="social">
+      <a data-social="facebook" href="#" target="_blank" rel="noopener" aria-label="TX Smart Alerts on Facebook" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22z"/></svg></a>
+      <a data-social="instagram" href="#" target="_blank" rel="noopener" aria-label="TX Smart Alerts on Instagram" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 4.7a5.1 5.1 0 1 0 0 10.2 5.1 5.1 0 0 0 0-10.2zm0 8.4a3.3 3.3 0 1 1 0-6.6 3.3 3.3 0 0 1 0 6.6zm5.3-9.8a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg></a>
+      <a data-social="linkedin" href="#" target="_blank" rel="noopener" aria-label="TX Smart Alerts on LinkedIn" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zm6.5 0h3.8v1.6h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg></a>
+      <a data-social="tiktok" href="#" target="_blank" rel="noopener" aria-label="TX Smart Alerts on TikTok" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 2h-3.4v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.4 6.4 0 1 0 5.4 6.3V8.6a7.9 7.9 0 0 0 4.6 1.5V6.7A4.6 4.6 0 0 1 16.6 2z"/></svg></a>
+      <a data-social="youtube" href="#" target="_blank" rel="noopener" aria-label="TX Smart Alerts on YouTube" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1z"/></svg></a>
+      <a data-social="x" href="#" target="_blank" rel="noopener" aria-label="TX Smart Alerts on X" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 3h3.1l-6.8 7.8 8 10.2h-6.3l-4.9-6.4L5.3 21H2.2l7.3-8.3L1.8 3h6.4l4.4 5.9zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></svg></a>
+      </div>
+    </div>
+    <p>Opportunity data sourced from the Texas Electronic State Business Daily (ESBD), Texas Comptroller of Public Accounts. TX Smart Alerts is an independent service and is not affiliated with the State of Texas. Always confirm details and deadlines on the official posting.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="stickyCta"><button class="btn btn-gold" onclick="openModal('monthly', 'sticky')">Start my 7-day free trial</button></div>
 
 <!-- SIGNUP MODAL -->
 <div class="modal-overlay" id="modalOverlay">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">×</button>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
     <h2 id="modalTitle">Start your free trial</h2>
-    <p class="sub" id="modalSub">7 days free — no charge until your trial ends.</p>
+    <p class="sub" id="modalSub">7 days free, then $25/month. Cancel anytime.</p>
     <input type="hidden" id="selectedPlan" value="monthly">
 
-    <label for="companyName">Company name *</label>
-    <input type="text" id="companyName" maxlength="200">
+    <div class="plan-toggle" role="group" aria-label="Choose a plan">
+      <button type="button" id="pickMonthly" aria-pressed="true" onclick="setPlan('monthly')"><b>Monthly</b>$25/month</button>
+      <button type="button" id="pickAnnual" aria-pressed="false" onclick="setPlan('annual')"><b>Annual</b>$240/year, save $60</button>
+    </div>
 
-    <label for="contactName">Your name *</label>
-    <input type="text" id="contactName" maxlength="200">
+    <div class="two-col">
+      <div><label for="companyName">Company name</label><input type="text" id="companyName" maxlength="200" autocomplete="organization"></div>
+      <div><label for="contactName">Your name</label><input type="text" id="contactName" maxlength="200" autocomplete="name"></div>
+    </div>
 
-    <label for="email">Email *</label>
-    <input type="email" id="email">
+    <div class="two-col">
+      <div><label for="email">Email for your alerts</label><input type="email" id="email" autocomplete="email"></div>
+      <div><label for="phone">Phone (optional)</label><input type="tel" id="phone" autocomplete="tel"></div>
+    </div>
 
-    <label for="phone">Phone (optional)</label>
-    <input type="tel" id="phone">
-
-    <label>What kind of work do you do? (select all that apply)</label>
+    <label>What kind of work do you do?</label>
     <div class="class-grid">
       <p class="grp">Building & site construction</p>
       <label><input type="checkbox" value="General construction / new buildings [NIGP 909, 912]"> <span>General construction / new buildings <small>NIGP 909, 912</small></span></label>
@@ -236,35 +463,99 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
       <label><input type="checkbox" value="Real estate appraisal [NIGP 946-15]"> <span>Real estate appraisal <small>NIGP 946-15</small></span></label>
       <label><input type="checkbox" value="Title &amp; escrow [NIGP 946-46]"> <span>Title &amp; escrow <small>NIGP 946-46</small></span></label>
     </div>
-    <p class="hint">We attach the matching NIGP code for you. Don't see your trade? Describe it below.</p>
+    <p class="hint">Don't see your trade? Describe it below and we'll set it up.</p>
 
-    <label for="notes">What specifically do you do?</label>
+    <label for="notes">What specifically do you do? (optional)</label>
     <textarea id="notes" maxlength="450" placeholder="e.g. Commercial HVAC, interior renovation, title services for land acquisition..."></textarea>
 
-    <button class="btn-submit" id="submitBtn" onclick="handleSubmit()">Continue to Payment →</button>
+    <button class="btn-submit" id="submitBtn" onclick="handleSubmit()">Continue to secure checkout</button>
+    <p class="reassure">
+      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10V7a6 6 0 1 1 12 0v3h1v12H5V10zm2 0h8V7a4 4 0 1 0-8 0z" fill="#8A8A8A"/></svg>
+      <span id="chargeNote">$0 today. Checkout is handled by Stripe. You won't be charged until your trial ends, and you can cancel anytime before then.</span>
+    </p>
     <div class="status-msg" id="statusMsg"></div>
   </div>
 </div>
-
-<footer>
-  TX Smart Alerts &nbsp;·&nbsp; Pearland, Texas &nbsp;·&nbsp; txsmartbuyalerts@gmail.com<br>
-  Opportunity data sourced from the Texas Electronic State Business Daily (ESBD), Texas Comptroller of Public Accounts.<br>TX Smart Alerts is an independent service and is not affiliated with the State of Texas. Always confirm details and deadlines on the official posting.
-</footer>
 
 <script>
   // Set this to your Railway backend URL after deploying
   const BACKEND_URL = "https://web-production-8758.up.railway.app";
 
-  function openModal(plan) {
+  // SOCIAL LINKS: paste each full profile URL between the quotes.
+  // Any left blank stays hidden on the page, so there are never broken links.
+  const SOCIAL = {
+    facebook:  "https://www.facebook.com/profile.php?id=61593614644722",
+    instagram: "https://www.instagram.com/txsmartbuyalerts/",
+    linkedin:  "https://www.linkedin.com/company/state-contracting-alerts/",
+    tiktok:    "",
+    youtube:   "",
+    x:         ""
+  };
+  document.querySelectorAll("[data-social]").forEach(function(a) {
+    const url = SOCIAL[a.dataset.social];
+    if (url) {
+      a.href = url; a.hidden = false;
+      a.addEventListener("click", function() {
+        try { if (window.gtag) gtag('event', 'social_click', { network: a.dataset.social }); } catch (e) {}
+      });
+    }
+  });
+
+  function track(name, params) {
+    try { if (window.gtag) gtag('event', name, params || {}); } catch (e) {}
+  }
+
+  function trialEndText() {
+    const d = new Date(); d.setDate(d.getDate() + 7);
+    return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+  }
+
+  function setPlan(plan) {
     document.getElementById("selectedPlan").value = plan;
-    document.getElementById("modalTitle").textContent = plan === "annual"
-      ? "Start your free trial — Annual Plan"
-      : "Start your free trial — Monthly Plan";
+    document.getElementById("pickMonthly").setAttribute("aria-pressed", plan === "monthly");
+    document.getElementById("pickAnnual").setAttribute("aria-pressed", plan === "annual");
+    document.getElementById("modalTitle").textContent = "Start your 7-day free trial";
     document.getElementById("modalSub").textContent = plan === "annual"
-      ? "7 days free, then $240/year (= $20/month). Cancel anytime."
+      ? "7 days free, then $240/year ($20/month). Cancel anytime."
       : "7 days free, then $25/month. Cancel anytime.";
+    document.getElementById("chargeNote").textContent =
+      "$0 today. Checkout is handled by Stripe. Your first charge is on " + trialEndText() +
+      " unless you cancel before then.";
+  }
+
+  // On-page trade chips mirror the modal checkboxes
+  const chipBox = document.getElementById("chips");
+  const boxes = Array.from(document.querySelectorAll(".class-grid input[type=checkbox]"));
+  boxes.forEach(function(cb) {
+    const name = cb.parentElement.querySelector("span").firstChild.textContent.trim();
+    const chip = document.createElement("button");
+    chip.type = "button"; chip.className = "chip"; chip.textContent = name;
+    chip.setAttribute("aria-pressed", "false");
+    chip.addEventListener("click", function() {
+      const on = chip.getAttribute("aria-pressed") !== "true";
+      chip.setAttribute("aria-pressed", on); cb.checked = on;
+      if (on) track('trade_select', { trade: name });
+      updateTradeCount();
+    });
+    cb.addEventListener("change", function() { chip.setAttribute("aria-pressed", cb.checked); updateTradeCount(); });
+    chipBox.appendChild(chip);
+  });
+
+  function updateTradeCount() {
+    const n = boxes.filter(function(b) { return b.checked; }).length;
+    document.getElementById("tradeCount").textContent = n === 0
+      ? "Nothing selected yet."
+      : n + (n === 1 ? " trade" : " trades") + " selected.";
+  }
+
+  let lastFocus = null;
+  function openModal(plan, source) {
+    lastFocus = document.activeElement;
+    setPlan(plan || "monthly");
     document.getElementById("modalOverlay").classList.add("open");
-    try { if (window.gtag) gtag('event', 'form_start', { plan: plan }); } catch (e) {}
+    document.body.style.overflow = "hidden";
+    setTimeout(function() { document.getElementById("companyName").focus(); }, 50);
+    try { if (window.gtag) gtag('event', 'form_start', { plan: plan, source: source || 'unknown' }); } catch (e) {}
   }
 
   document.addEventListener("keydown", function(e) {
@@ -272,12 +563,26 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
   });
 
   function closeModal() {
-    document.getElementById("modalOverlay").classList.remove("open");
+    const o = document.getElementById("modalOverlay");
+    if (!o.classList.contains("open")) return;
+    o.classList.remove("open");
+    document.body.style.overflow = "";
+    if (lastFocus) try { lastFocus.focus(); } catch (e) {}
   }
 
   document.getElementById("modalOverlay").addEventListener("click", function(e) {
     if (e.target === this) closeModal();
   });
+
+  // Sticky mobile button appears after the hero scrolls away
+  (function() {
+    const sticky = document.getElementById("stickyCta");
+    const hero = document.querySelector(".hero");
+    if (!("IntersectionObserver" in window)) return;
+    new IntersectionObserver(function(entries) {
+      sticky.classList.toggle("show", !entries[0].isIntersecting);
+    }).observe(hero);
+  })();
 
   async function handleSubmit() {
     const company  = document.getElementById("companyName").value.trim();
@@ -327,7 +632,7 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
     }
 
     submitBtn.disabled = true;
-    submitBtn.textContent = "Redirecting to payment...";
+    submitBtn.textContent = "Opening secure checkout...";
 
     try {
       const res = await fetch(BACKEND_URL + "/create-checkout-session", {
@@ -352,10 +657,10 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
       }
     } catch (err) {
       statusMsg.className = "status-msg error";
-      statusMsg.textContent = "Something went wrong. Please try again or email txsmartbuyalerts@gmail.com.";
+      statusMsg.textContent = "Checkout didn't open. Please try again, or email txsmartbuyalerts@gmail.com and we'll set you up.";
       statusMsg.style.display = "block";
       submitBtn.disabled = false;
-      submitBtn.textContent = "Continue to Payment →";
+      submitBtn.textContent = "Continue to secure checkout";
     }
   }
 </script>
