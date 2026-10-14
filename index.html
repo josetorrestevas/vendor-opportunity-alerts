@@ -306,6 +306,8 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
   .btn-submit:disabled { opacity: .6; cursor: progress; }
   .reassure { display: flex; gap: .6rem; align-items: flex-start; font-size: .8125rem; color: var(--ink-muted); margin: .9rem 0 0; }
   .reassure svg { flex-shrink: 0; margin-top: .1rem; }
+  .consent { font-size: .75rem; line-height: 1.45; color: var(--ink-muted); margin: 1.25rem 0 0; }
+  .consent + .btn-submit { margin-top: .9rem; }
   .status-msg { margin-top: .9rem; font-size: .875rem; padding: .7rem .9rem; border-radius: .75rem; display: none; }
   .status-msg.error { display: block; background: #fff2f2; color: #a1000f; }
 
@@ -622,10 +624,11 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
     <label for="notes">What specifically do you do? (optional)</label>
     <textarea id="notes" maxlength="450" placeholder="e.g. Commercial HVAC, interior renovation, title services for land acquisition..."></textarea>
 
-    <button class="btn-submit" id="submitBtn" onclick="handleSubmit()">Continue to secure checkout</button>
+    <p class="consent" id="consentText">By clicking Next, you agree that TX Smart Alerts may contact you by email, phone, and text message (SMS) at the email and phone number you provided, including to follow up about your trial and account. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out of texts or HELP for help; you can unsubscribe from emails at any time.</p>
+    <button class="btn-submit" id="submitBtn" onclick="handleSubmit()">Next</button>
     <p class="reassure">
       <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10V7a6 6 0 1 1 12 0v3h1v12H5V10zm2 0h8V7a4 4 0 1 0-8 0z" fill="#8e8e93"/></svg>
-      <span id="chargeNote">$0 today. Checkout is handled by Stripe. You won't be charged until your trial ends, and you can cancel anytime before then.</span>
+      <span id="chargeNote">Next step: confirm your free trial on Stripe's secure checkout. $0 today, and you can cancel anytime before your trial ends.</span>
     </p>
     <div class="status-msg" id="statusMsg" role="alert"></div>
     </div>
@@ -674,7 +677,7 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
       ? "7 days free, then $240/year ($20/month). Cancel anytime."
       : "7 days free, then $25/month. Cancel anytime.";
     document.getElementById("chargeNote").textContent =
-      "$0 today. Checkout is handled by Stripe. Your first charge is on " + trialEndText() +
+      "Next step: confirm your free trial on Stripe's secure checkout. $0 today. Your first charge is on " + trialEndText() +
       " unless you cancel before then.";
   }
 
@@ -1062,7 +1065,7 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
     }
 
     submitBtn.disabled = true;
-    submitBtn.textContent = "Opening secure checkout...";
+    submitBtn.textContent = "One moment...";
 
     try {
       const res = await fetch(BACKEND_URL + "/create-checkout-session", {
@@ -1090,7 +1093,7 @@ src="https://www.facebook.com/tr?id=1419643606931194&ev=PageView&noscript=1"
       statusMsg.textContent = "Checkout didn't open. Please try again, or email txsmartbuyalerts@gmail.com and we'll set you up.";
       statusMsg.style.display = "block";
       submitBtn.disabled = false;
-      submitBtn.textContent = "Continue to secure checkout";
+      submitBtn.textContent = "Next";
     }
   }
 </script>
